@@ -9,6 +9,7 @@ import com.alirezabashi98.quiz.R
 class MainActivity : AppCompatActivity() {
 
     private lateinit var btnStartQuiz: Button
+    private lateinit var btnManagerQuiz: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     private fun castView() {
 
         btnStartQuiz = findViewById(R.id.btn_mainActivity_startQuiz)
+        btnManagerQuiz = findViewById(R.id.btn_mainActivity_manager_quiz)
 
     }
 }
