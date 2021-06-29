@@ -13,7 +13,7 @@ import com.alirezabashi98.quiz.database.entitie.QuizModelEntity
 )
 abstract class QuizDatabase : RoomDatabase() {
 
-    abstract fun noteDAO(): QuizDao
+    abstract fun quizDAO(): QuizDao
 
     companion object {
 
