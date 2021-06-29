@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -48,5 +49,9 @@ dependencies {
 
     // Lottie Animation Library
     implementation 'com.airbnb.android:lottie:3.7.0'
+
+    //    library orm room
+    implementation "androidx.room:room-runtime:2.3.0"
+    kapt "androidx.room:room-compiler:2.3.0"
 
 }
