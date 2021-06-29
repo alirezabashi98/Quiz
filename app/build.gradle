@@ -54,14 +54,7 @@ dependencies {
     implementation "androidx.room:room-runtime:2.3.0"
     kapt "androidx.room:room-compiler:2.3.0"
 
-    // Anko Commons
-    implementation "org.jetbrains.anko:anko-commons:0.10.5"
-
     // library lottie
     implementation "com.airbnb.android:lottie:3.7.0"
-
-    // BouncyRecyclerView
-    // https://github.com/Valkriaine/Bouncy
-    implementation 'com.factor:bouncy:1.8'
 
 }
