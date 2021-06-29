@@ -97,7 +97,7 @@ class QuizMainActivity : AppCompatActivity(), View.OnClickListener {
                 .build().show()
 
         }else{
-            mQuestionList = ConvertTo().QuizDbConvertToAllQuestionModel(list) as ArrayList<QuestionModel>
+            mQuestionList = ConvertTo.QuizDbConvertToAllQuestionModel(list) as ArrayList<QuestionModel>
         }
 
     }
