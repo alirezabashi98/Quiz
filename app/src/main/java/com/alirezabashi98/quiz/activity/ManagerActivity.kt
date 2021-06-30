@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
 import com.alirezabashi98.quiz.R
+import com.alirezabashi98.quiz.adapter.CheckedNullQuestion
 import com.alirezabashi98.quiz.adapter.ViewManagerQuizAdapter
 import com.alirezabashi98.quiz.database.dao.QuizDao
 import com.alirezabashi98.quiz.database.db.QuizDatabase
@@ -17,7 +18,7 @@ import com.alirezabashi98.quiz.utility.ConvertTo
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dev.shreyaspatil.MaterialDialog.MaterialDialog
 
-class ManagerActivity : AppCompatActivity() {
+class ManagerActivity : AppCompatActivity() ,CheckedNullQuestion {
 
     private lateinit var db: QuizDao
 
@@ -33,13 +34,7 @@ class ManagerActivity : AppCompatActivity() {
 
         castView()
 
-        setView()
-
-        addDataTest()
-
-        setDataAdapter()
-
-        setAdapter()
+        reset()
 
     }
 
@@ -70,6 +65,9 @@ class ManagerActivity : AppCompatActivity() {
                     dialogInterface.cancel()
                     db.insertAll(ConvertTo.QuizDbConvertToAllQuizDb(Constants.getQuestions()))
                     Toast.makeText(this, "دیتاهای پیش فرض اضافه شدن", Toast.LENGTH_SHORT).show()
+
+                    reset()
+
                 }
                 .setNegativeButton(
                     "نه"
@@ -107,7 +105,20 @@ class ManagerActivity : AppCompatActivity() {
 
     private fun setAdapter() {
 
-        recyclerView.adapter = ViewManagerQuizAdapter(DataAdapter)
+        recyclerView.adapter = ViewManagerQuizAdapter(DataAdapter,this)
+
+    }
+
+    override fun setckedisNull() {
+        reset()
+    }
+
+    private fun reset(){
+
+        setView()
+        addDataTest()
+        setDataAdapter()
+        setAdapter()
 
     }
 

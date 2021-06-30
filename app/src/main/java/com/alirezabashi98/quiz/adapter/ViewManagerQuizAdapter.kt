@@ -13,7 +13,7 @@ import com.alirezabashi98.quiz.database.db.QuizDatabase
 import com.alirezabashi98.quiz.model.QuestionModel
 import com.alirezabashi98.quiz.utility.ConvertTo
 
-class ViewManagerQuizAdapter(var DataListQuiz: MutableList<QuestionModel>) :
+class ViewManagerQuizAdapter(var DataListQuiz: MutableList<QuestionModel>,var checkedNullQuestion: CheckedNullQuestion) :
     RecyclerView.Adapter<ViewManagerQuizAdapter.ViewHolderViewManagerQuizAdapter>() {
 
     private lateinit var db : QuizDao
@@ -67,6 +67,11 @@ class ViewManagerQuizAdapter(var DataListQuiz: MutableList<QuestionModel>) :
         notifyItemRemoved(position)
         notifyItemRangeChanged(position, DataListQuiz.size)
 
+        // If there is no question, show the animation
+        if (DataListQuiz.size == 1){
+            checkedNullQuestion.setckedisNull()
+        }
+
     }
     private fun onClick(holder: ViewHolderViewManagerQuizAdapter,position: Int){
 
@@ -83,5 +88,11 @@ class ViewManagerQuizAdapter(var DataListQuiz: MutableList<QuestionModel>) :
         db = QuizDatabase.getMyDatabase(context)!!.quizDAO()
 
     }
+
+}
+
+interface CheckedNullQuestion{
+
+    fun setckedisNull()
 
 }
