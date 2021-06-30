@@ -25,8 +25,6 @@ class ManagerActivity : AppCompatActivity() {
 
     }
 
-
-
     private fun castView(){
 
         db = QuizDatabase.getMyDatabase(this)!!.quizDAO()
@@ -48,11 +46,9 @@ class ManagerActivity : AppCompatActivity() {
                     Toast.makeText(this,"دیتاهای پیش فرض اضافه شدن",Toast.LENGTH_SHORT).show()
                 }
                 .setNegativeButton(
-                    "نه و خروج"
+                    "نه"
                 ) { dialogInterface, _ ->
                     dialogInterface.cancel()
-                    finishAffinity()
-//                    finish()
                 }
                 .build().show()
         }
