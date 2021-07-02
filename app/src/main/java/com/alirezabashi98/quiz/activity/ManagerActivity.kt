@@ -21,13 +21,13 @@ import dev.shreyaspatil.MaterialDialog.MaterialDialog
 
 class ManagerActivity : AppCompatActivity(), CheckedNullQuestion {
 
-    private lateinit var db: QuizDao
+    private var db: QuizDao = QuizDatabase.getMyDatabase(this)!!.quizDAO()
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var lottieAnimationView: LottieAnimationView
     private lateinit var fab: FloatingActionButton
 
-    private var DataAdapter: MutableList<QuestionModel> = mutableListOf()
+    private var dataAdapter: MutableList<QuestionModel> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +46,7 @@ class ManagerActivity : AppCompatActivity(), CheckedNullQuestion {
         // FloatingActionButton go to activity add Quiz
         fab.setOnClickListener {
             startActivity(Intent(this, AddQuizActivity::class.java))
+            finish()
         }
 
     }
@@ -59,8 +60,6 @@ class ManagerActivity : AppCompatActivity(), CheckedNullQuestion {
         lottieAnimationView = findViewById(R.id.lottie_managerActivity_nullQuiz)
 
         fab = findViewById(R.id.fab_mangerActivity_addQuiz)
-
-        db = QuizDatabase.getMyDatabase(this)!!.quizDAO()
 
     }
 
@@ -107,7 +106,7 @@ class ManagerActivity : AppCompatActivity(), CheckedNullQuestion {
 
         for (item in db.getAllQuiz()) {
 
-            DataAdapter.add(
+            dataAdapter.add(
                 ConvertTo.QuizDbConvertToQuestionModel(item)
             )
 
@@ -117,7 +116,7 @@ class ManagerActivity : AppCompatActivity(), CheckedNullQuestion {
 
     private fun setAdapter() {
 
-        recyclerView.adapter = ViewManagerQuizAdapter(DataAdapter, this)
+        recyclerView.adapter = ViewManagerQuizAdapter(dataAdapter, this)
 
     }
 

@@ -9,7 +9,7 @@
 
     <!--    app bar-->
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/cardView_addQuizActivity_addQuizAppBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorAddQuizActivity_appBar"
@@ -23,7 +23,7 @@
             android:background="@color/colorAddQuizActivity_appBar">
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/imageView_addQuizActivity_iconBack"
                 android:layout_width="18sp"
                 android:layout_height="18sp"
                 android:layout_marginStart="16dp"
@@ -35,7 +35,7 @@
                 tools:ignore="ContentDescription,MissingConstraints"/>
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/textView_addQuizActivity_titleAppBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -43,12 +43,12 @@
                 android:textColor="@color/colorAddQuizActivity_appBarTextTitle"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintStart_toEndOf="@+id/imageView_addQuizActivity_iconBack"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="HardcodedText" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/textView_addQuizActivity_saveQuiz"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -76,7 +76,7 @@
     <!--    show message error-->
 
     <EditText
-        android:id="@+id/edit_addQuizActivity_titleQuizText"
+        android:id="@+id/edit_addQuizActivity_textQuestion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -93,21 +93,21 @@
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@+id/cardView_addQuizActivity_addQuizAppBar"
         tools:ignore="Autofill,HardcodedText,LabelFor" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView_addQuizActivity_showError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="یکی از جواب ها باید درست باشد تیک کنارش بزن!!"
+        tools:text="یکی از جواب ها باید درست باشد تیک کنارش بزن!!"
         android:textColor="@color/colorError"
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_addQuizActivity_titleQuizText"
+        app:layout_constraintTop_toBottomOf="@+id/edit_addQuizActivity_textQuestion"
         tools:ignore="HardcodedText" />
 
     <LinearLayout
@@ -120,7 +120,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView_addQuizActivity_showError"
         app:layout_constraintVertical_bias="0.131">
 
         <!--    item 1-->

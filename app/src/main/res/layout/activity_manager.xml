@@ -6,6 +6,58 @@
     android:layout_height="match_parent"
     tools:context=".activity.ManagerActivity">
 
+    <!--    app bar-->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_managerQuizActivity_managerQuizAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorAddQuizActivity_appBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorAddQuizActivity_appBar">
+
+            <ImageView
+                android:id="@+id/imageView_managerQuizActivity_iconBack"
+                android:layout_width="18sp"
+                android:layout_height="18sp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/cta_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/colorAddQuizActivity_appBarIconBack"
+                tools:ignore="ContentDescription,MissingConstraints" />
+
+            <TextView
+                android:id="@+id/textView_addQuizActivity_titleAppBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:text="مدیریت سوالات"
+                android:textColor="@color/colorAddQuizActivity_appBarTextTitle"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView_managerQuizActivity_iconBack"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="-47dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottie_managerActivity_nullQuiz"
         android:layout_width="wrap_content"
@@ -13,7 +65,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView_managerQuizActivity_managerQuizAppBar"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/shopcash_empty" />
@@ -21,11 +73,12 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rec_managerActivity_listQuiz"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toTopOf="parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/lottie_managerActivity_nullQuiz"
         app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView_managerQuizActivity_managerQuizAppBar" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_mangerActivity_addQuiz"

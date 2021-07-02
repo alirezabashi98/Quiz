@@ -10,14 +10,11 @@ import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.room.Database
 import com.alirezabashi98.quiz.R
 import com.alirezabashi98.quiz.database.dao.QuizDao
 import com.alirezabashi98.quiz.database.db.QuizDatabase
-import com.alirezabashi98.quiz.database.entitie.QuizModelEntity
 import com.alirezabashi98.quiz.model.QuestionModel
 import com.alirezabashi98.quiz.utility.Constants
 import com.alirezabashi98.quiz.utility.ConvertTo
@@ -36,7 +33,7 @@ class QuizMainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var progressBar: ProgressBar
     private lateinit var txtProgressBar: TextView
 
-    private lateinit var db : QuizDao
+    private var db: QuizDao = QuizDatabase.getMyDatabase(this)!!.quizDAO()
 
     private lateinit var mQuestionList: ArrayList<QuestionModel>
 
@@ -50,7 +47,7 @@ class QuizMainActivity : AppCompatActivity(), View.OnClickListener {
 
     private var mClickBtnSubmit: Boolean = false
 
-    private val startTimer = (Constants.getQuestions().size * 30) * 1000L
+    private val startTimer = (db.getAllQuiz().size * 30) * 1000L
     var timer = startTimer
     private lateinit var quizTimer: CountDownTimer
 
@@ -72,11 +69,11 @@ class QuizMainActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-    private fun getDataInDatabase(){
+    private fun getDataInDatabase() {
 
         val list = db.getAllQuiz()
 
-        if (list.isNullOrEmpty()){
+        if (list.isNullOrEmpty()) {
 
             MaterialDialog.Builder(this)
                 .setTitle("سوالای یافت نشد")
@@ -86,7 +83,7 @@ class QuizMainActivity : AppCompatActivity(), View.OnClickListener {
                     "اره"
                 ) { dialogInterface, _ ->
                     dialogInterface.cancel()
-                    startActivity(Intent(this,ManagerActivity::class.java))
+                    startActivity(Intent(this, ManagerActivity::class.java))
                 }
                 .setNegativeButton(
                     "نه"
@@ -96,8 +93,9 @@ class QuizMainActivity : AppCompatActivity(), View.OnClickListener {
                 }
                 .build().show()
 
-        }else{
-            mQuestionList = ConvertTo.QuizDbConvertToAllQuestionModel(list) as ArrayList<QuestionModel>
+        } else {
+            mQuestionList =
+                ConvertTo.QuizDbConvertToAllQuestionModel(list) as ArrayList<QuestionModel>
         }
 
     }
@@ -116,8 +114,6 @@ class QuizMainActivity : AppCompatActivity(), View.OnClickListener {
         txtItem4 = findViewById(R.id.tv_quizMain_item_4)
 
         btnSubmit = findViewById(R.id.btn_quizMain_submit)
-
-        db = QuizDatabase.getMyDatabase(this)!!.quizDAO()
 
     }
 
