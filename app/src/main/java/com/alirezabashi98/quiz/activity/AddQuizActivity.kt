@@ -168,7 +168,7 @@ class AddQuizActivity : AppCompatActivity() {
             }
             else -> {
                 addQuizInDb()
-                Toast.makeText(this,"save quiz",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"سوال اضافه شد",Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this,ManagerActivity::class.java))
                 finish()
             }

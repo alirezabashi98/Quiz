@@ -3,6 +3,7 @@ package com.alirezabashi98.quiz.activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,6 +28,8 @@ class ManagerActivity : AppCompatActivity(), CheckedNullQuestion {
     private lateinit var lottieAnimationView: LottieAnimationView
     private lateinit var fab: FloatingActionButton
 
+    private lateinit var iconBack: ImageView
+
     private var dataAdapter: MutableList<QuestionModel> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,6 +52,11 @@ class ManagerActivity : AppCompatActivity(), CheckedNullQuestion {
             finish()
         }
 
+        // button exit activity
+        iconBack.setOnClickListener {
+            finish()
+        }
+
     }
 
     private fun castView() {
@@ -60,6 +68,8 @@ class ManagerActivity : AppCompatActivity(), CheckedNullQuestion {
         lottieAnimationView = findViewById(R.id.lottie_managerActivity_nullQuiz)
 
         fab = findViewById(R.id.fab_mangerActivity_addQuiz)
+
+        iconBack = findViewById(R.id.imageView_managerQuizActivity_iconBack)
 
     }
 
