@@ -14,4 +14,22 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+    <!--    all activity-->
+    <color name="colorText">#EFEFEF</color>
+    <color name="colorHintText">#A0A0A0</color>
+    <color name="colorIcon">#009688</color>
+    <color name="colorTint">@color/colorBlue_600</color>
+    <color name="colorError">#FF8C8C</color>
+
+    <!--    color layout addQuizActivity    -->
+    <color name="colorAddQuizActivity_Title">#EFEFEF</color>
+    <color name="colorAddQuizActivity_HintTitle">#A0A0A0</color>
+    <color name="colorAddQuizActivity_appBar">#0E0E0E</color>
+    <color name="colorAddQuizActivity_appBarTextTitle">#FDFDFD</color>
+    <color name="colorAddQuizActivity_appBarTextSave">@color/colorBlue_500</color>
+    <color name="colorAddQuizActivity_appBarIconBack">#FFFFFF</color>
+    <color name="colorAddQuizActivity_background">#2F2F2F</color>
+
 </resources>

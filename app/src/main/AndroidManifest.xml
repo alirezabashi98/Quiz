@@ -11,7 +11,8 @@
         android:supportsRtl="false"
         android:theme="@style/Theme.Quiz"
         tools:ignore="AllowBackup">
-        <activity android:name=".activity.UpDataQuizActivity"></activity>
+        <activity android:name=".activity.AddQuizActivity"></activity>
+        <activity android:name=".activity.UpDataQuizActivity" />
         <activity android:name=".activity.ManagerActivity" />
         <activity android:name=".activity.ResultActivity" />
         <activity android:name=".activity.QuizMainActivity" />

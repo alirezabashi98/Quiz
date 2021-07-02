@@ -16,6 +16,13 @@
     <color name="white">#FFFFFFFF</color>
 
 
+    <!--    all activity-->
+    <color name="colorText">#141414</color>
+    <color name="colorHintText">#646363</color>
+    <color name="colorIcon">#F44336</color>
+    <color name="colorTint">@color/colorBlue_800</color>
+    <color name="colorError">#F44336</color>
+
     <!--    color stroke style background item notes    -->
     <color name="colorBackgroundItemNotes">#E5E5E5</color>
     <!--    color stroke style background item notes    -->
@@ -26,12 +33,15 @@
     <color name="colorItemTextTitleNotes">#141414</color>
     <color name="colorItemTextTextNotes">#6F6F6F</color>
 
-    <!--    color layout AddActivityMain    -->
-    <color name="colorAddNoteActivity_Title">#141414</color>
-    <color name="colorAddNoteActivity_HintTitle">#646363</color>
+    <!--    color layout addQuizActivity    -->
+    <color name="colorAddQuizActivity_Title">#141414</color>
+    <color name="colorAddQuizActivity_HintTitle">#646363</color>
+    <color name="colorAddQuizActivity_appBar">#FFFFFF</color>
+    <color name="colorAddQuizActivity_appBarTextTitle">#0E0E0E</color>
+    <color name="colorAddQuizActivity_appBarTextSave">@color/colorBlue_A400</color>
+    <color name="colorAddQuizActivity_appBarIconBack">@color/black</color>
+    <color name="colorAddQuizActivity_background">#FAFAFA</color>
 
-    <color name="colorAddNoteActivity_Note">#3B3B3B</color>
-    <color name="colorAddNoteActivity_HintNote">#646363</color>
 
     <!--    color background add notes    -->
     <color name="colorBackgroundAddNotes">#ffffff</color>

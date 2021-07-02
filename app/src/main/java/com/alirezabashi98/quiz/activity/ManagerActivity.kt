@@ -1,5 +1,6 @@
 package com.alirezabashi98.quiz.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -18,7 +19,7 @@ import com.alirezabashi98.quiz.utility.ConvertTo
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dev.shreyaspatil.MaterialDialog.MaterialDialog
 
-class ManagerActivity : AppCompatActivity() ,CheckedNullQuestion {
+class ManagerActivity : AppCompatActivity(), CheckedNullQuestion {
 
     private lateinit var db: QuizDao
 
@@ -35,6 +36,17 @@ class ManagerActivity : AppCompatActivity() ,CheckedNullQuestion {
         castView()
 
         reset()
+
+        setOnClickViews()
+
+    }
+
+    private fun setOnClickViews() {
+
+        // FloatingActionButton go to activity add Quiz
+        fab.setOnClickListener {
+            startActivity(Intent(this, AddQuizActivity::class.java))
+        }
 
     }
 
@@ -105,7 +117,7 @@ class ManagerActivity : AppCompatActivity() ,CheckedNullQuestion {
 
     private fun setAdapter() {
 
-        recyclerView.adapter = ViewManagerQuizAdapter(DataAdapter,this)
+        recyclerView.adapter = ViewManagerQuizAdapter(DataAdapter, this)
 
     }
 
@@ -113,7 +125,7 @@ class ManagerActivity : AppCompatActivity() ,CheckedNullQuestion {
         reset()
     }
 
-    private fun reset(){
+    private fun reset() {
 
         setView()
         addDataTest()

@@ -50,7 +50,7 @@ class QuizMainActivity : AppCompatActivity(), View.OnClickListener {
 
     private var mClickBtnSubmit: Boolean = false
 
-    private val startTimer = (Constants.getQuestions().size * 60) * 1000L
+    private val startTimer = (Constants.getQuestions().size * 30) * 1000L
     var timer = startTimer
     private lateinit var quizTimer: CountDownTimer
 

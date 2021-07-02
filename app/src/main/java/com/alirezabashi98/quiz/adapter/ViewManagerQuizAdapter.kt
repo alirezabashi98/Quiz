@@ -68,7 +68,7 @@ class ViewManagerQuizAdapter(var DataListQuiz: MutableList<QuestionModel>,var ch
         notifyItemRangeChanged(position, DataListQuiz.size)
 
         // If there is no question, show the animation
-        if (DataListQuiz.size == 1){
+        if (DataListQuiz.size == 0){
             checkedNullQuestion.setckedisNull()
         }
 

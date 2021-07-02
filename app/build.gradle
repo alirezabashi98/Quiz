@@ -55,6 +55,8 @@ dependencies {
     kapt "androidx.room:room-compiler:2.3.0"
 
     // library lottie
-    implementation "com.airbnb.android:lottie:3.7.0"
+    // https://lottiefiles.com/blog/working-with-lottie/getting-started-with-lottie-animations-in-android-app
+    def lottieVersion = "3.4.0"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 
 }
