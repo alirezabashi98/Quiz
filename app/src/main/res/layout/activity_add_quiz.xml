@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAddQuizActivity_background"
+    tools:context=".activity.AddQuizActivity">
+
+    <!--    app bar-->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorAddQuizActivity_appBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorAddQuizActivity_appBar">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="18sp"
+                android:layout_height="18sp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/cta_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/colorAddQuizActivity_appBarIconBack"
+                tools:ignore="ContentDescription,MissingConstraints"/>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:text="سوال جدید"
+                android:textColor="@color/colorAddQuizActivity_appBarTextTitle"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="ایجاد"
+                android:textColor="@color/colorAddQuizActivity_appBarTextSave"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="-47dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!--    quiz-->
+
+    <!--    show message error-->
+
+    <EditText
+        android:id="@+id/edit_addQuizActivity_titleQuizText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="34dp"
+        android:background="@android:color/transparent"
+        android:gravity="top"
+        android:hint="متن سوال"
+        android:inputType="text"
+        android:layoutDirection="rtl"
+        android:padding="7dp"
+        android:textColor="@color/colorAddQuizActivity_Title"
+        android:textColorHint="@color/colorAddQuizActivity_HintTitle"
+        android:textDirection="rtl"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        tools:ignore="Autofill,HardcodedText,LabelFor" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="یکی از جواب ها باید درست باشد تیک کنارش بزن!!"
+        android:textColor="@color/colorError"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_addQuizActivity_titleQuizText"
+        tools:ignore="HardcodedText" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:orientation="vertical"
+        android:padding="7dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.131">
+
+        <!--    item 1-->
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkbox_addQuizActivity_item_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/colorTint"
+                tools:ignore="UnusedAttribute" />
+
+
+            <EditText
+                android:id="@+id/editText_addQuizActivity_textResponse_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:gravity="top"
+                android:hint="جواب اول"
+                android:inputType="text"
+                android:layoutDirection="rtl"
+                android:padding="7dp"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorHintText"
+                android:textDirection="rtl"
+                android:textSize="14sp"
+                tools:ignore="Autofill,HardcodedText,LabelFor" />
+
+        </LinearLayout>
+
+        <!--    item 2-->
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkbox_addQuizActivity_item_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/colorTint"
+                tools:ignore="UnusedAttribute"  />
+
+
+            <EditText
+                android:id="@+id/editText_addQuizActivity_textResponse_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:gravity="top"
+                android:hint="جواب دوم"
+                android:inputType="text"
+                android:layoutDirection="rtl"
+                android:padding="7dp"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorHintText"
+                android:textDirection="rtl"
+                android:textSize="14sp"
+                tools:ignore="Autofill,HardcodedText,LabelFor" />
+
+        </LinearLayout>
+
+        <!--    item 3-->
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkbox_addQuizActivity_item_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/colorTint"
+                tools:ignore="UnusedAttribute"  />
+
+
+            <EditText
+                android:id="@+id/editText_addQuizActivity_textResponse_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:gravity="top"
+                android:hint="جواب سوم"
+                android:inputType="text"
+                android:layoutDirection="rtl"
+                android:padding="7dp"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorHintText"
+                android:textDirection="rtl"
+                android:textSize="14sp"
+                tools:ignore="Autofill,HardcodedText,LabelFor" />
+
+        </LinearLayout>
+
+        <!--    item 4-->
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkbox_addQuizActivity_item_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/colorTint"
+                tools:ignore="UnusedAttribute"  />
+
+
+            <EditText
+                android:id="@+id/editText_addQuizActivity_textResponse_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:gravity="top"
+                android:hint="جواب چهارم"
+                android:inputType="text"
+                android:layoutDirection="rtl"
+                android:padding="7dp"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorHintText"
+                android:textDirection="rtl"
+                android:textSize="14sp"
+                tools:ignore="Autofill,HardcodedText,LabelFor" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

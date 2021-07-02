@@ -1,10 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FF6200EE</color>
+    <color name="colorPrimary">@color/colorBlue_900</color>
+    <color name="colorPrimaryVariant">@color/black</color>
+    <color name="colorOnPrimary">@color/colorBackgroundItemNotes</color>
+    <color name="colorSecondary">#263238</color>
+    <color name="colorSecondaryVariant">#000a12</color>
+    <color name="colorOnSecondary">@color/white</color>
+
+    <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
-    <color name="colorPrimaryVariant">#FF3700B3</color>
-    <color name="colorSecondary">#FF03DAC5</color>
-    <color name="colorSecondaryVariant">#FF03DAC5</color>
-    <color name="colorOnPrimary">#FFFFFFFF</color>
-    <color name="colorOnSecondary">#FF000000</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+
+    <!--    all activity-->
+    <color name="colorText">#EFEFEF</color>
+    <color name="colorHintText">#A0A0A0</color>
+    <color name="colorIcon">#009688</color>
+    <color name="colorTint">@color/colorBlue_600</color>
+    <color name="colorError">#FF8C8C</color>
+
+    <!--    color layout addQuizActivity    -->
+    <color name="colorAddQuizActivity_Title">#EFEFEF</color>
+    <color name="colorAddQuizActivity_HintTitle">#A0A0A0</color>
+    <color name="colorAddQuizActivity_appBar">#0E0E0E</color>
+    <color name="colorAddQuizActivity_appBarTextTitle">#FDFDFD</color>
+    <color name="colorAddQuizActivity_appBarTextSave">@color/colorBlue_500</color>
+    <color name="colorAddQuizActivity_appBarIconBack">#FFFFFF</color>
+    <color name="colorAddQuizActivity_background">#2F2F2F</color>
+
 </resources>

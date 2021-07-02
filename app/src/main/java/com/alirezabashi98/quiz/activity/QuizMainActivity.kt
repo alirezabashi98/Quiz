@@ -10,11 +10,17 @@ import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.room.Database
 import com.alirezabashi98.quiz.R
+import com.alirezabashi98.quiz.database.dao.QuizDao
+import com.alirezabashi98.quiz.database.db.QuizDatabase
+import com.alirezabashi98.quiz.database.entitie.QuizModelEntity
 import com.alirezabashi98.quiz.model.QuestionModel
 import com.alirezabashi98.quiz.utility.Constants
+import com.alirezabashi98.quiz.utility.ConvertTo
 import dev.shreyaspatil.MaterialDialog.MaterialDialog
 
 
@@ -30,7 +36,10 @@ class QuizMainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var progressBar: ProgressBar
     private lateinit var txtProgressBar: TextView
 
-    private val mQuestionList: ArrayList<QuestionModel> = Constants.getQuestions()
+    private lateinit var db : QuizDao
+
+    private lateinit var mQuestionList: ArrayList<QuestionModel>
+
     private var mCurrentPosition: Int = 1
     private var mSelectedPosition: Int = 0
     private var mCurrentAnswers: Int = 0
@@ -41,7 +50,7 @@ class QuizMainActivity : AppCompatActivity(), View.OnClickListener {
 
     private var mClickBtnSubmit: Boolean = false
 
-    private val startTimer = 12_000L
+    private val startTimer = (Constants.getQuestions().size * 30) * 1000L
     var timer = startTimer
     private lateinit var quizTimer: CountDownTimer
 
@@ -53,11 +62,43 @@ class QuizMainActivity : AppCompatActivity(), View.OnClickListener {
 
         castView()
 
+        getDataInDatabase()
+
         setQuestion()
 
         startQuizTimer()
 
         setOnClick()
+
+    }
+
+    private fun getDataInDatabase(){
+
+        val list = db.getAllQuiz()
+
+        if (list.isNullOrEmpty()){
+
+            MaterialDialog.Builder(this)
+                .setTitle("سوالای یافت نشد")
+                .setMessage("میخوای سوالی اضافه کنی؟")
+                .setCancelable(false)
+                .setPositiveButton(
+                    "اره"
+                ) { dialogInterface, _ ->
+                    dialogInterface.cancel()
+                    startActivity(Intent(this,ManagerActivity::class.java))
+                }
+                .setNegativeButton(
+                    "نه"
+                ) { dialogInterface, _ ->
+                    dialogInterface.cancel()
+                    finish()
+                }
+                .build().show()
+
+        }else{
+            mQuestionList = ConvertTo.QuizDbConvertToAllQuestionModel(list) as ArrayList<QuestionModel>
+        }
 
     }
 
@@ -75,6 +116,8 @@ class QuizMainActivity : AppCompatActivity(), View.OnClickListener {
         txtItem4 = findViewById(R.id.tv_quizMain_item_4)
 
         btnSubmit = findViewById(R.id.btn_quizMain_submit)
+
+        db = QuizDatabase.getMyDatabase(this)!!.quizDAO()
 
     }
 
