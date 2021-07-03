@@ -14,7 +14,6 @@ import com.alirezabashi98.quiz.adapter.CheckedNullQuestion
 import com.alirezabashi98.quiz.adapter.ViewManagerQuizAdapter
 import com.alirezabashi98.quiz.database.dao.QuizDao
 import com.alirezabashi98.quiz.database.db.QuizDatabase
-import com.alirezabashi98.quiz.model.QuestionModel
 import com.alirezabashi98.quiz.utility.Constants
 import com.alirezabashi98.quiz.utility.ConvertTo
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -25,13 +24,10 @@ class ManagerActivity : AppCompatActivity(), CheckedNullQuestion {
     private var db: QuizDao = QuizDatabase.getMyDatabase(this)!!.quizDAO()
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var quizAdapter: ViewManagerQuizAdapter
     private lateinit var lottieAnimationView: LottieAnimationView
     private lateinit var fab: FloatingActionButton
 
     private lateinit var iconBack: ImageView
-
-    private var dataAdapter: MutableList<QuestionModel> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -115,8 +111,10 @@ class ManagerActivity : AppCompatActivity(), CheckedNullQuestion {
 
     private fun setAdapter() {
 
-        recyclerView.adapter = ViewManagerQuizAdapter(ConvertTo.QuizDbConvertToAllQuestionModel(db.getAllQuiz())
-            .toMutableList(), this)
+        recyclerView.adapter = ViewManagerQuizAdapter(
+            ConvertTo.QuizDbConvertToAllQuestionModel(db.getAllQuiz())
+                .toMutableList(), this
+        )
 
     }
 

@@ -2,15 +2,11 @@ package com.alirezabashi98.quiz.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.alirezabashi98.quiz.R
 import com.alirezabashi98.quiz.database.dao.QuizDao
 import com.alirezabashi98.quiz.database.db.QuizDatabase
-import com.alirezabashi98.quiz.database.entitie.QuizModelEntity
-import com.alirezabashi98.quiz.model.QuestionModel
-import com.alirezabashi98.quiz.utility.Constants
 import dev.shreyaspatil.MaterialDialog.MaterialDialog
 
 class MainActivity : AppCompatActivity() {
@@ -18,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnStartQuiz: Button
     private lateinit var btnManagerQuiz: Button
 
-    lateinit var db : QuizDao
+    private lateinit var db: QuizDao
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,12 +35,12 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun onClick(){
+    private fun onClick() {
 
         btnStartQuiz.setOnClickListener {
-            if (db.getAllQuiz().size > 0){
+            if (db.getAllQuiz().isNotEmpty()) {
                 startActivity(Intent(this, QuizMainActivity::class.java))
-            }else{
+            } else {
                 MaterialDialog.Builder(this)
                     .setTitle("سوالای یافت نشد")
                     .setMessage("میخوای سوالی اضافه کنی؟")
@@ -53,7 +49,7 @@ class MainActivity : AppCompatActivity() {
                         "اره"
                     ) { dialogInterface, _ ->
                         dialogInterface.cancel()
-                        startActivity(Intent(this,ManagerActivity::class.java))
+                        startActivity(Intent(this, ManagerActivity::class.java))
                     }
                     .setNegativeButton(
                         "نه"
