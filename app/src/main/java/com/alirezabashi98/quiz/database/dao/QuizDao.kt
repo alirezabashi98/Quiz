@@ -25,7 +25,7 @@ interface QuizDao {
     fun delete(quiz: QuizModelEntity)
 
     @Update
-    fun updateNote(note: QuizModelEntity)
+    fun updateQuiz(quiz: QuizModelEntity)
 
 
 }

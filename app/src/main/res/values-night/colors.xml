@@ -19,7 +19,8 @@
     <!--    all activity-->
     <color name="colorText">#EFEFEF</color>
     <color name="colorHintText">#A0A0A0</color>
-    <color name="colorIcon">#009688</color>
+    <color name="colorIconDelete">#FF9800</color>
+    <color name="colorIconEdit">#009688</color>
     <color name="colorTint">@color/colorBlue_600</color>
     <color name="colorError">#FF8C8C</color>
 

@@ -1,40 +1,52 @@
 package com.alirezabashi98.quiz.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import com.alirezabashi98.quiz.R
 import com.alirezabashi98.quiz.database.dao.QuizDao
 import com.alirezabashi98.quiz.database.db.QuizDatabase
 import com.alirezabashi98.quiz.database.entitie.QuizModelEntity
-import com.alirezabashi98.quiz.model.QuestionModel
 import dev.shreyaspatil.MaterialDialog.MaterialDialog
 
 class AddQuizActivity : AppCompatActivity() {
 
-    private var correctAnswer : Int = 0
+    companion object {
 
-    private var db : QuizDao = QuizDatabase.getMyDatabase(this)!!.quizDAO()
+        const val ID_QUIZ = "id"
+        const val QUESTION_QUIZ = "question"
+        const val ITEM_1_QUIZ = "item_1"
+        const val ITEM_2_QUIZ = "item_2"
+        const val ITEM_3_QUIZ = "item_3"
+        const val ITEM_4_QUIZ = "item_4"
+        const val CORRECT_ANSWER_QUIZ = "correctAnswer"
+
+    }
+
+    private var upQuiz = false
+
+    private var correctAnswer: Int = 0
+
+    private var db: QuizDao = QuizDatabase.getMyDatabase(this)!!.quizDAO()
 
     // cast View
-    private lateinit var titleAppBar : TextView
-    private lateinit var saveQuiz : TextView
-    private lateinit var errorQuiz : TextView
-    private lateinit var iconBack : ImageView
+    private lateinit var titleAppBar: TextView
+    private lateinit var saveQuiz: TextView
+    private lateinit var errorQuiz: TextView
+    private lateinit var iconBack: ImageView
 
-    private lateinit var question : TextView
+    private lateinit var question: TextView
 
-    private lateinit var textItem1 : EditText
-    private lateinit var textItem2 : EditText
-    private lateinit var textItem3 : EditText
-    private lateinit var textItem4 : EditText
+    private lateinit var textItem1: EditText
+    private lateinit var textItem2: EditText
+    private lateinit var textItem3: EditText
+    private lateinit var textItem4: EditText
 
-    private lateinit var checkBoxItem1 : CheckBox
-    private lateinit var checkBoxItem2 : CheckBox
-    private lateinit var checkBoxItem3 : CheckBox
-    private lateinit var checkBoxItem4 : CheckBox
-
+    private lateinit var checkBoxItem1: CheckBox
+    private lateinit var checkBoxItem2: CheckBox
+    private lateinit var checkBoxItem3: CheckBox
+    private lateinit var checkBoxItem4: CheckBox
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,9 +57,11 @@ class AddQuizActivity : AppCompatActivity() {
 
         onClick()
 
+        checkedUpQuiz()
+
     }
 
-    private fun castView(){
+    private fun castView() {
 
         titleAppBar = findViewById(R.id.textView_addQuizActivity_titleAppBar)
         saveQuiz = findViewById(R.id.textView_addQuizActivity_saveQuiz)
@@ -68,14 +82,14 @@ class AddQuizActivity : AppCompatActivity() {
 
     }
 
-    private fun restCheckBox(){
+    private fun restCheckBox() {
         checkBoxItem1.isChecked = false
         checkBoxItem2.isChecked = false
         checkBoxItem3.isChecked = false
         checkBoxItem4.isChecked = false
     }
 
-    private fun onClickCheckBoxes(){
+    private fun onClickCheckBoxes() {
 
         // checkBox 1 is checked
         checkBoxItem1.setOnClickListener {
@@ -104,7 +118,7 @@ class AddQuizActivity : AppCompatActivity() {
 
     }
 
-    private fun onClick(){
+    private fun onClick() {
 
         onClickCheckBoxes()
 
@@ -118,7 +132,7 @@ class AddQuizActivity : AppCompatActivity() {
 
     }
 
-    private fun showMessageExit(){
+    private fun showMessageExit() {
 
         MaterialDialog.Builder(this)
             .setTitle("اضافه شدن سوال")
@@ -134,7 +148,7 @@ class AddQuizActivity : AppCompatActivity() {
                 "نه"
             ) { dialogInterface, _ ->
                 dialogInterface.cancel()
-                startActivity(Intent(this,ManagerActivity::class.java))
+                startActivity(Intent(this, ManagerActivity::class.java))
                 finish()
             }
             .build().show()
@@ -145,7 +159,7 @@ class AddQuizActivity : AppCompatActivity() {
         showMessageExit()
     }
 
-    private fun checkedForSaveQuizInDb(){
+    private fun checkedForSaveQuizInDb() {
 
         when {
             correctAnswer == 0 -> {
@@ -168,27 +182,86 @@ class AddQuizActivity : AppCompatActivity() {
             }
             else -> {
                 addQuizInDb()
-                Toast.makeText(this,"سوال اضافه شد",Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this,ManagerActivity::class.java))
+                Toast.makeText(this, "سوال اضافه شد", Toast.LENGTH_SHORT).show()
+                /*startActivity(Intent(this, MainActivity::class.java))
+                startActivity(Intent(this, ManagerActivity::class.java))*/
                 finish()
+
             }
         }
 
     }
 
-    private fun addQuizInDb(){
+    private fun addQuizInDb() {
 
-        db.insert(
-            QuizModelEntity(
-                question = question.text.toString(),
-                item_1 = textItem1.text.toString(),
-                item_2 = textItem2.text.toString(),
-                item_3 = textItem3.text.toString(),
-                item_4 = textItem4.text.toString(),
-                correctAnswer = correctAnswer
+        if (upQuiz) {
+
+            db.updateQuiz(
+                QuizModelEntity(
+                    id = intent.getIntExtra(AddQuizActivity.ID_QUIZ,0),
+                    question = question.text.toString(),
+                    item_1 = textItem1.text.toString(),
+                    item_2 = textItem2.text.toString(),
+                    item_3 = textItem3.text.toString(),
+                    item_4 = textItem4.text.toString(),
+                    correctAnswer = correctAnswer
+                )
             )
-        )
 
+        } else {
+
+            db.insert(
+                QuizModelEntity(
+                    question = question.text.toString(),
+                    item_1 = textItem1.text.toString(),
+                    item_2 = textItem2.text.toString(),
+                    item_3 = textItem3.text.toString(),
+                    item_4 = textItem4.text.toString(),
+                    correctAnswer = correctAnswer
+                )
+            )
+        }
+
+    }
+
+    private fun checkedUpQuiz() {
+        if (!intent.getStringExtra(AddQuizActivity.QUESTION_QUIZ.toString()).equals(null)) {
+
+            upQuiz = true
+
+            titleAppBar.text = "ویرایش سوال"
+
+            question.text = intent.getStringExtra(AddQuizActivity.QUESTION_QUIZ).toString()
+
+            textItem1.setText(intent.getStringExtra(AddQuizActivity.ITEM_1_QUIZ))
+            textItem2.setText(intent.getStringExtra(AddQuizActivity.ITEM_2_QUIZ))
+            textItem3.setText(intent.getStringExtra(AddQuizActivity.ITEM_3_QUIZ))
+            textItem4.setText(intent.getStringExtra(AddQuizActivity.ITEM_4_QUIZ))
+
+            when (intent.getIntExtra(AddQuizActivity.CORRECT_ANSWER_QUIZ, 0)) {
+                1 -> {
+                    checkBoxItem1.isChecked = true
+                    correctAnswer = 1
+                }
+                2 -> {
+                    checkBoxItem2.isChecked = true
+                    correctAnswer = 2
+                }
+                3 -> {
+                    checkBoxItem3.isChecked = true
+                    correctAnswer = 3
+                }
+                4 -> {
+                    checkBoxItem4.isChecked = true
+                    correctAnswer = 4
+                }
+                else -> {
+                    errorQuiz.text = "ارور ایتم درست سوال"
+                }
+
+            }
+
+        }
     }
 
 }

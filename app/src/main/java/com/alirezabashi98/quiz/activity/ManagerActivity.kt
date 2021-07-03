@@ -25,6 +25,7 @@ class ManagerActivity : AppCompatActivity(), CheckedNullQuestion {
     private var db: QuizDao = QuizDatabase.getMyDatabase(this)!!.quizDAO()
 
     private lateinit var recyclerView: RecyclerView
+    private lateinit var quizAdapter: ViewManagerQuizAdapter
     private lateinit var lottieAnimationView: LottieAnimationView
     private lateinit var fab: FloatingActionButton
 
@@ -112,21 +113,10 @@ class ManagerActivity : AppCompatActivity(), CheckedNullQuestion {
 
     }
 
-    private fun setDataAdapter() {
-
-        for (item in db.getAllQuiz()) {
-
-            dataAdapter.add(
-                ConvertTo.QuizDbConvertToQuestionModel(item)
-            )
-
-        }
-
-    }
-
     private fun setAdapter() {
 
-        recyclerView.adapter = ViewManagerQuizAdapter(dataAdapter, this)
+        recyclerView.adapter = ViewManagerQuizAdapter(ConvertTo.QuizDbConvertToAllQuestionModel(db.getAllQuiz())
+            .toMutableList(), this)
 
     }
 
@@ -138,9 +128,13 @@ class ManagerActivity : AppCompatActivity(), CheckedNullQuestion {
 
         setView()
         addDataTest()
-        setDataAdapter()
         setAdapter()
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        reset()
     }
 
 }
